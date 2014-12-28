@@ -1,0 +1,10 @@
+<% @race.each do |race| %>
+	<h2 class="race-title"><%= race["title"] %></h2>
+	<ul>
+		<li>Category: <%= race["category"] %></li>
+		<li>Date: <%= race["date"] %></li>
+		<li>Location: <%= race["location_url"] %></li>
+	</ul>
+	<img src="<%= race["location_url"] %>">
+	<p class="race-info"></p>
+<% end %>
