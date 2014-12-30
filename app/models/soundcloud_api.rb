@@ -7,8 +7,8 @@ module SoundcloudApi
 		final_playlist = []
 		bpm_playlist.each_with_index do |track,index|
 			final_track = {}
-			if index < 30
-				sleep 0.15
+			if index < 10
+				sleep 0.25
 				search_query = "#{track['song']} #{track['artist']}" 
 				new_track = client.get('/tracks', :q => "#{search_query}", :licence => 'cc-by-sa')
 				if new_track == []
