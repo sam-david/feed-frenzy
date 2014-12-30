@@ -1,0 +1,27 @@
+<iframe id="sc-widget" width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1848538&show_artwork=true" class="sticky"></iframe>
+<div class="row bpm-header">
+  <div class="large-8 large-centered columns">
+  <img src="images/bpm-logo.png">
+  <h2 class="center">Most Recently Played</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 large-centered columns">
+    <table class="bpm-table">
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Links</th>
+      </tr>
+    <% @tracks.each do |track| %>
+        <td><img src="<%= track['artwork_url'] %>"></td>
+        <td><p><%= track["song"] %></p></td>
+        <td><p><%= track["artist"] %></p></td>
+        <td><a href="" id="<%= track["uri1"] %>">Link1</a>|<a href="" id="<%= track["uri2"] %>">Link2</a>|<a href="" id="<%= track["uri3"] %>">Link3</a></td>
+        <td><%= track["breaker?"] %> </td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>

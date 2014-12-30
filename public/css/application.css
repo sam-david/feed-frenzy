@@ -1,0 +1,11 @@
+body {
+	background: linear-gradient(to right, #004379, #00D3E9 , #004379);
+}
+
+.bpm-header {
+	text-align: center;
+}
+
+.bpm-table {
+	margin: 0 auto;
+}
