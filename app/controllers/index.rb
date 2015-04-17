@@ -8,8 +8,8 @@ get '/music' do
 	Rss.billboard_rss
 end
 
-get '/twitter' do
-	bpm_playlist = BpmTwitter.twitter_search
-	@tracks = SoundcloudApi.start(bpm_playlist)
+get '/bpm' do
+	@bpm_playlist = BpmTwitter.twitter_search
+	# @tracks = SoundcloudApi.start(bpm_playlist)
 	erb :bpm
 end 

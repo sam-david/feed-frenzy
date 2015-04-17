@@ -14,11 +14,12 @@
         <th>Artist</th>
         <th>Links</th>
       </tr>
-    <% @tracks.each do |track| %>
-        <td><img src="<%= track['artwork_url'] %>"></td>
+    <% @bpm_playlist.each do |track| %>
+      <tr>
+        <td>Image was here</td>
         <td><p><%= track["song"] %></p></td>
         <td><p><%= track["artist"] %></p></td>
-        <td><a href="" id="<%= track["uri1"] %>">Link1</a>|<a href="" id="<%= track["uri2"] %>">Link2</a>|<a href="" id="<%= track["uri3"] %>">Link3</a></td>
+        <td>Play Song</td>
         <td><%= track["breaker?"] %> </td>
       </tr>
     <% end %>

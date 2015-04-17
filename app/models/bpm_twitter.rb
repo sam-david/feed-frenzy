@@ -7,17 +7,13 @@ module BpmTwitter
 		  config.access_token_secret = ENV['ACCESS_TOKEN_SECRET']
 		end
 		bpm_playlist = []
-		bpm_tweets = client.user_timeline(247455247, :count => 50)
+		bpm_tweets = client.user_timeline(247455247, :count => 100)
 		bpm_tweets.each do |tweet|
 			new_track = {}
 			if /#BpmBreaker/.match(tweet.text) != nil
 				new_track["breaker?"] = true
-				p tweet.text
-				# new_track["song"] = /^([^-]*)-([^-]*)/.match(tweet.text)[2].rstrip.lstrip.chomp(" playing on #BPM")
 				new_track["song"] = /([^-]*)-([^-]*)-([^-]*)/.match(tweet.text)[2].rstrip.lstrip.chomp(" playing on #BPM").chomp(" #BpmBreaker").gsub(/&amp;/, '&')
 				new_track["artist"] = /([^-]*)-([^-]*)-([^-]*)/.match(tweet.text)[1].rstrip.lstrip.chomp(" playing on #BPM").chomp(" #BpmBreaker").gsub(/&amp;/, '&')
-				# new_track["song"] = /([^-]*)/.match(tweet.text)[3].rstrip.lstrip.chomp(" playing on #BPM")
-				# p new_track["song"]
 			else
 				new_track["breaker?"] = false
 				new_track["song"] = /^([^-]*)-([^-]*)/.match(tweet.text)[2].rstrip.lstrip.chomp(" playing on #BPM")
