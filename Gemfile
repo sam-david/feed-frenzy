@@ -4,6 +4,7 @@ gem 'nokogiri'
 gem 'dotenv'
 gem 'twitter'
 gem 'soundcloud'
+gem 'json'
 
 # PostgreSQL driver
 gem 'pg'

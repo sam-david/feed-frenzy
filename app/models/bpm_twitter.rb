@@ -12,11 +12,11 @@ module BpmTwitter
 			new_track = {}
 			if /#BpmBreaker/.match(tweet.text) != nil
 				new_track["breaker?"] = true
-				new_track["song"] = /([^-]*)-([^-]*)-([^-]*)/.match(tweet.text)[2].rstrip.lstrip.chomp(" playing on #BPM").chomp(" #BpmBreaker").gsub(/&amp;/, '&')
+				new_track["title"] = /([^-]*)-([^-]*)-([^-]*)/.match(tweet.text)[2].rstrip.lstrip.chomp(" playing on #BPM").chomp(" #BpmBreaker").gsub(/&amp;/, '&')
 				new_track["artist"] = /([^-]*)-([^-]*)-([^-]*)/.match(tweet.text)[1].rstrip.lstrip.chomp(" playing on #BPM").chomp(" #BpmBreaker").gsub(/&amp;/, '&')
 			else
 				new_track["breaker?"] = false
-				new_track["song"] = /^([^-]*)-([^-]*)/.match(tweet.text)[2].rstrip.lstrip.chomp(" playing on #BPM")
+				new_track["title"] = /^([^-]*)-([^-]*)/.match(tweet.text)[2].rstrip.lstrip.chomp(" playing on #BPM")
 				new_track["artist"] = /^([^-]*)-([^-]*)/.match(tweet.text)[1].rstrip
 			end
 			bpm_playlist << new_track

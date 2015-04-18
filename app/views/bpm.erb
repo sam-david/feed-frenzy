@@ -2,24 +2,37 @@
 <div class="row bpm-header">
   <div class="large-8 large-centered columns">
   <img src="images/bpm-logo.png">
-  <h2 class="center">Most Recently Played</h2>
+  <h2 class="center">100 Tracks Most Recently Played</h2>
   </div>
 </div>
 <div class="row">
   <div class="large-12 large-centered columns">
+    <dl class="accordion" data-accordion>
+      <% @bpm_playlist.each_with_index do |track, index| %>
+      <dd class="accordion-navigation">
+        <a href="#<%= track['title'] track['artist'] index %>">
+          <%= track["title"] + " featuring... " + track["artist"] %>
+          <% if track["breaker?"] == true %>
+            <span class="breaker right"><%= "BPM Breaker" %></span>
+          <% end %>
+        </a>
+        <div id="<%= track['title'] track['artist'] index %>" class="content">
+          Panel 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+      </dd>
+      <% end %>
+    </dl>
     <table class="bpm-table">
       <tr>
-        <th></th>
         <th>Title</th>
-        <th>Artist</th>
+        <th>Artist(s)</th>
         <th>Links</th>
       </tr>
     <% @bpm_playlist.each do |track| %>
-      <tr>
-        <td>Image was here</td>
-        <td><p><%= track["song"] %></p></td>
-        <td><p><%= track["artist"] %></p></td>
-        <td>Play Song</td>
+        <td><%= track["title"] %></td>
+        <td><%= track["artist"] %></td>
+        <td><a class="search-soundcloud-link" id="<%= track['title'] %> <%= track['artist'] %>">Play Track</a></td>
+        <td><a class="spotify-link" id="<%= track['title'] %>">Spotify</a></td>
         <td><%= track["breaker?"] %> </td>
       </tr>
     <% end %>

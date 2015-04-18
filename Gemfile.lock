@@ -121,6 +121,7 @@ DEPENDENCIES
   dotenv
   factory_girl
   faker
+  json
   nokogiri
   pg
   rack-test
