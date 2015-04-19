@@ -45,7 +45,7 @@ module SoundcloudApi
 		new_track = client.get('/tracks', :q => "#{query}", :licence => 'cc-by-sa')
 		# p new_track.first
 		new_track.each do |track|
-			track_list.push({title: track.title, artist: track.user.username, artwork: track.artwork_url, count: track.playback_count})
+			track_list.push({title: track.title, artist: track.user.username, artwork: track.artwork_url, count: track.playback_count, uri: track.uri})
 		end
 		return track_list.sort_by! {|track| track[:count]}.reverse
 	end

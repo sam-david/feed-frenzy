@@ -11,5 +11,21 @@ body {
 }
 
 .breaker {
-	
+
+}
+
+.accordion-navigation a {
+	background-color: #004379 !important;
+}
+
+.accordion-navigation a:hover {
+	background-color: #0078a0 !important;
+}
+
+.artist {
+	color: purple;
+}
+
+.title {
+
 }

@@ -86,10 +86,12 @@ $(document).ready(function() {
     accordion: {
       callback : function (accordion) {
         console.log(accordion);
+        searchSoundcloud(accordion[0].parentNode.firstElementChild.innerText, accordion[0].id);
+        console.log(accordion[0].parentNode.firstElementChild.innerText);
       }
     }
   });
-  
+
 });
 
 
@@ -113,4 +115,38 @@ function addTrackToPlaylist() {
   // }).fail.(function() {
   //   console.log("song could not be added")
   // })
+}
+
+function searchSoundcloud(queryText, divId) {
+  $.ajax({
+      url: "search_track",
+      data: {query: queryText}
+    }).success(function(data) {
+      // window.scrollTo(0, top); 
+      // loadSoundcloudWidget(data);
+      // console.log("Retrieved Track:" + data);
+      appendSoundcloudTracks(data, divId);
+      // for (i = 0; i < data.length; i++) {
+      //   console.log(data[i]);
+      // }
+    }).fail(function() {
+      console.log("failed to get track");
+    });
+}
+
+function searchSpotify(uri) {
+  console.log("poop");
+}
+
+function appendSoundcloudTracks(trackData, divId) {
+  divName = '#' + divId;
+  titleDiv = "<div class='row'><div class='large-3 columns'>Image</div><div class='large-3 columns'>User</div><div class='large-3 columns'>Track Title</div><div class='large-3 columns'>Play Count</div></div>";
+  $(divName).empty();
+  $(divName).append(titleDiv);
+  for (i = 0; i < trackData.length && i < 5; i++) {
+    console.log(typeof trackData[i].uri);
+    trackUri = trackData[i].uri;
+    newDiv = "<div class='row'><div class='large-2 columns'><img src='"+ trackData[i].artwork + "'></div><div class='large-2 columns'>" + trackData[i].artist + "</div><div class='large-3 columns'>" + trackData[i].title + "</div><div class='large-3 columns'>" + trackData[i].count +"</div><div class='large-2 columns'><a onclick='searchSpotify()'>Spotify</a></div></div>";
+    $(divName).append(newDiv)
+  }
 }

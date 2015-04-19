@@ -10,32 +10,17 @@
     <dl class="accordion" data-accordion>
       <% @bpm_playlist.each_with_index do |track, index| %>
       <dd class="accordion-navigation">
-        <a href="#<%= track['title'] track['artist'] index %>">
-          <%= track["title"] + " featuring... " + track["artist"] %>
+        <a href="#panel<%= index %>">
+          <span class="title"><%= track["title"] %> </span> featuring... <span class="artist"><%= track["artist"] %></span>
           <% if track["breaker?"] == true %>
             <span class="breaker right"><%= "BPM Breaker" %></span>
           <% end %>
         </a>
-        <div id="<%= track['title'] track['artist'] index %>" class="content">
-          Panel 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        <div id="panel<%= index %>" class="content">
+          Loading soundcload tracks...
         </div>
       </dd>
       <% end %>
     </dl>
-    <table class="bpm-table">
-      <tr>
-        <th>Title</th>
-        <th>Artist(s)</th>
-        <th>Links</th>
-      </tr>
-    <% @bpm_playlist.each do |track| %>
-        <td><%= track["title"] %></td>
-        <td><%= track["artist"] %></td>
-        <td><a class="search-soundcloud-link" id="<%= track['title'] %> <%= track['artist'] %>">Play Track</a></td>
-        <td><a class="spotify-link" id="<%= track['title'] %>">Spotify</a></td>
-        <td><%= track["breaker?"] %> </td>
-      </tr>
-    <% end %>
-    </table>
   </div>
 </div>
