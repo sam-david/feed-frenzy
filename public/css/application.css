@@ -16,6 +16,13 @@ body {
 
 .accordion-navigation a {
 	background-color: #004379 !important;
+	/*border-right: solid black 2px;
+	border-left: solid black 2px;
+	border-top: solid black 1px;
+	border-bottom: solid black 1px;*/
+	margin-bottom: 1%;
+	/*box-shadow: 5px 5px 4px -1px rgba(0,0,0,0.75);*/
+	box-shadow: 0 0 15px #00AFFF;
 }
 
 .accordion-navigation a:hover {
@@ -27,5 +34,42 @@ body {
 }
 
 .title {
+	color: white;
+	text-decoration: underline;
+}
 
+.hidden-uri {
+	display: none;
+}
+
+.header-text {
+	text-align: center;
+}
+
+.content {
+	margin-bottom: 1%;
+}
+
+.neon-border {
+	border: 0;
+	height: 0;
+	box-shadow: 0 0 8px 5px rgb(255, 59, 254);
+}
+
+.neon-border:after {
+	content: "\00a0";
+}
+
+.wide-row {
+	max-width: 100%;
+	line-height: normal;
+}
+
+.wide-columns {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.play-button {
+	font-size: 1.4em;
 }

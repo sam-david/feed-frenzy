@@ -86,6 +86,7 @@ $(document).ready(function() {
     accordion: {
       callback : function (accordion) {
         console.log(accordion);
+        $(accordion[0].previousSibling.previousElementSibling).css('margin-bottom',"0px");
         searchSoundcloud(accordion[0].parentNode.firstElementChild.innerText, accordion[0].id);
         console.log(accordion[0].parentNode.firstElementChild.innerText);
       }
@@ -134,19 +135,24 @@ function searchSoundcloud(queryText, divId) {
     });
 }
 
-function searchSpotify(uri) {
-  console.log("poop");
+function playSoundcloud(element) {
+  uri = $(element).parent()[0].nextSibling.innerText;
+  window.scrollTo(0, 0); 
+  loadSoundcloudWidget(uri);
+  console.log(uri);
 }
 
 function appendSoundcloudTracks(trackData, divId) {
   divName = '#' + divId;
+  headerDiv = "<div class='row'><div class='large-12'><h3 class='header-text'>Select a Track</h3></div></div>";
   titleDiv = "<div class='row'><div class='large-3 columns'>Image</div><div class='large-3 columns'>User</div><div class='large-3 columns'>Track Title</div><div class='large-3 columns'>Play Count</div></div>";
   $(divName).empty();
+  $(divName).append(headerDiv);
   $(divName).append(titleDiv);
   for (i = 0; i < trackData.length && i < 5; i++) {
-    console.log(typeof trackData[i].uri);
-    trackUri = trackData[i].uri;
-    newDiv = "<div class='row'><div class='large-2 columns'><img src='"+ trackData[i].artwork + "'></div><div class='large-2 columns'>" + trackData[i].artist + "</div><div class='large-3 columns'>" + trackData[i].title + "</div><div class='large-3 columns'>" + trackData[i].count +"</div><div class='large-2 columns'><a onclick='searchSpotify()'>Spotify</a></div></div>";
+    trackUri = trackData[i].uri.replace("/", "\/");
+    console.log(trackUri);
+    newDiv = "<div class='row'><div class='large-2 columns'><img src='"+ trackData[i].artwork + "'></div><div class='large-2 columns'>" + trackData[i].artist + "</div><div class='large-3 columns'>" + trackData[i].title + "</div><div class='large-3 columns'>" + trackData[i].count + "</div><div class='large-2 columns'><i onclick='playSoundcloud(this)' class='fi-play'></i></div><div class='hidden-uri'>"+ trackData[i].uri + "</div></div>";
     $(divName).append(newDiv)
   }
 }

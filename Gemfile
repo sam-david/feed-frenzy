@@ -5,6 +5,8 @@ gem 'dotenv'
 gem 'twitter'
 gem 'soundcloud'
 gem 'json'
+gem 'oauth2'
+gem 'rspotify'
 
 # PostgreSQL driver
 gem 'pg'
